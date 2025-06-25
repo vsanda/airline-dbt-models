@@ -1,0 +1,99 @@
+version: 2
+
+models:
+  - name: stg_flights
+    tags: ["staging", "bronze"]
+    columns:
+      - name: icao24
+        tests: [not_null]
+      - name: callsign
+      - name: origin_country
+      - name: time_position
+      - name: last_contact
+      - name: longitude
+      - name: latitude
+      - name: baro_altitude
+      - name: on_ground
+      - name: velocity
+      - name: heading
+      - name: vertical_rate
+      - name: sensors
+      - name: geo_altitude
+      - name: squawk
+      - name: spi
+      - name: position_source
+      - name: timestamp
+
+  - name: stg_fuel_prices
+    tags: ["staging", "bronze"]
+    columns:
+      - name: price_month
+        tests: [not_null]
+      - name: duoarea
+      - name: area_name
+      - name: product
+      - name: product_name
+      - name: process
+      - name: process_name
+      - name: series
+      - name: series_description
+      - name: price_per_gallon
+
+  - name: stg_plane_inventory
+    tags: ["staging", "bronze"]
+    columns:
+      - name: aircraft_id
+        tests: [not_null, unique]
+      - name: model
+      - name: manufacturer
+      - name: capacity
+      - name: status
+      - name: date
+
+  - name: stg_crew_payroll
+    tags: ["staging", "bronze"]
+    columns:
+      - name: crew_id
+        tests: [not_null, unique]
+      - name: name
+      - name: role
+      - name: hours_logged
+      - name: monthly_salary
+      - name: date
+
+  - name: stg_passenger_bookings
+    tags: ["staging", "bronze"]
+    columns:
+      - name: booking_id
+        tests: [not_null, unique]
+      - name: passenger_name
+      - name: flight_id
+      - name: seat_number
+      - name: departure_time
+      - name: booking_time
+      - name: status
+      - name: date
+
+  - name: stg_supplier_logs
+    tags: ["staging", "bronze"]
+    columns:
+      - name: supplier
+      - name: part
+      - name: order_date
+        tests: [not_null]
+      - name: expected_delivery
+      - name: status
+      - name: delay_days
+      - name: is_delayed
+
+  - name: stg_airports
+    tags: ["staging", "bronze"]
+    columns:
+      - name: airport_code
+        tests: [not_null, unique]
+      - name: name
+      - name: city
+      - name: country
+      - name: timezone
+      - name: elevation_ft
+      - name: date

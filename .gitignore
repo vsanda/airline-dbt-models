@@ -1,0 +1,6 @@
+.envrc
+target/
+dbt_packages/
+logs/
+venv/
+.dbt/

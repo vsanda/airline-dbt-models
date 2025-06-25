@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: raw_airline
+    schema: public        # This is the Postgres schema, not the DB
+    database: airline_data 
+    tables:
+      - name: flights
+      - name: crude_oil_prices
+      - name: inventory_data
+      - name: payroll_data
+      - name: passenger_data
+      - name: supplier_logs
+      - name: airports_data
