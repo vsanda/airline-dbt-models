@@ -13,7 +13,7 @@ cleaned as (
         trim("process-name") as process_name,
         series,
         trim("series-description") as series_description,
-        {{ dbt.safe_cast("price_per_gallon", "int") }} as price_per_gallon_usd
+        price_per_gallon_usd
     from source
 )
 

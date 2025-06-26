@@ -1,67 +1,16 @@
 version: 2
-
 models:
-  - name: int_flight_segments
-    description: Intermediate model combining flights with enriched route metadata.
-    columns:
-      - name: airport_id
-        tests: [not_null]
-      - name: origin_country
-      - name: destination_country
-      - name: distance_km
-      - name: duration_minutes
-
-  - name: int_crew_costs
-    description: Monthly crew payroll costs with normalized roles.
-    columns:
-      - name: crew_id
-        tests: [not_null, unique]
-      - name: role
-      - name: monthly_salary
-      - name: hours_logged
-      - name: cost_per_hour
-
-  - name: int_fuel_costs_enriched
-    description: Fuel costs enriched with WTI baseline and adjusted spot pricing.
-    columns:
-      - name: fuel_category
-        tests: [not_null]
-      - name: price_per_gallon
-      - name: source_series
-      - name: period
-
-  - name: int_plane_inventory_enriched
-    description: Plane inventory enriched with status flags and derived capacity buckets.
-    columns:
-      - name: aircraft_id
-        tests: [not_null, unique]
-      - name: model
-      - name: capacity
-      - name: is_retired
-      - name: capacity_bucket
-
-  - name: int_booking_metrics
-    description: Aggregated booking metrics per flight and day for downstream revenue modeling.
-    columns:
-      - name: flight_id
-        tests: [not_null]
-      - name: flight_day
-        tests: [not_null]
-      - name: total_bookings
-      - name: cancelled_bookings
-      - name: confirmed_bookings
-      - name: estimated_revenue_usd
-      - name: first_booking_time
-      - name: last_booking_time
-
-  - name: int_booking_revenue
-    description: Booking revenue details with confirmation status and estimated revenue.
-    columns:
-      - name: booking_id
-        tests:
-          - not_null
-          - unique
-      - name: flight_id
-      - name: is_confirmed
-      - name: estimated_revenue
-      - name: ingestion_date
+- name: int_flight_metrics
+  columns: []
+- name: int_route_lookup
+  columns: []
+- name: int_flight_revenue
+  columns: []
+# - name: int_crew_metrics
+#   columns: []
+# - name: int_supplier_metrics
+#   columns: []
+# - name: int_revenue_details
+#   columns: []
+# - name: int_ontime_events
+#   columns: []
