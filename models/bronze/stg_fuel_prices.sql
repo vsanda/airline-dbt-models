@@ -4,16 +4,21 @@ with source as (
 
 cleaned as (
     select
-        to_date(period || '-01', 'YYYY-MM-DD') as price_month,
-        duoarea as region_code,
-        trim("area-name") as region_name,
+        period,
+        cast(period || '-01' as date) as price_month_date,
+        duoarea,
+        "area-name" as area_name,
         product,
-        trim("product-name") as product_name,
+        "product-name" as product_name,
         process,
-        trim("process-name") as process_name,
+        "process-name" as process_name,
         series,
-        trim("series-description") as series_description,
-        price_per_gallon_usd
+        "series-description" as series_description,
+        region,
+        cast(price_month as date) as price_month,
+        {{ dbt.safe_cast("price_per_gallon_usd", "float") }} as price_per_gallon_usd,
+        fuel_category,
+        cast(flight_day as date) as ingest_date
     from source
 )
 

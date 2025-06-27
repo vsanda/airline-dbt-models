@@ -1,8 +1,6 @@
 version: 2
 models:
-- name: int_flight_metrics
-  columns: []
-- name: int_route_lookup
+- name: int_flights_metrics
   columns: []
 - name: int_flight_revenue
   columns: []

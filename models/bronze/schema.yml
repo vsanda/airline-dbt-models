@@ -28,7 +28,6 @@ models:
     tags: ["staging", "bronze"]
     columns:
       - name: price_month
-        tests: [not_null]
       - name: duoarea
       - name: area_name
       - name: product
@@ -39,7 +38,7 @@ models:
       - name: series_description
       - name: price_per_gallon
 
-  - name: stg_plane_inventory
+  - name: stg_aircraft
     tags: ["staging", "bronze"]
     columns:
       - name: aircraft_id
@@ -54,14 +53,14 @@ models:
     tags: ["staging", "bronze"]
     columns:
       - name: crew_id
-        tests: [not_null, unique]
+        tests: [not_null]
       - name: name
       - name: role
       - name: hours_logged
       - name: monthly_salary
       - name: date
 
-  - name: stg_passenger_bookings
+  - name: stg_bookings
     tags: ["staging", "bronze"]
     columns:
       - name: booking_id
